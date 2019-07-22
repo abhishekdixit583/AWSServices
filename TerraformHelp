@@ -1,0 +1,19 @@
+To install Terraform, follow these steps:
+
+
+SSH into your cloud server
+sudo yum install -y zip unzip (if these are not installed)
+wget https://releases.hashicorp.com/terraform/0.12.4/terraform_0.12.4_linux_amd64.zip
+unzip terraform_0.12.4_linux_amd64.zip
+sudo mv terraform /usr/local/bin/
+Confirm terraform binary is accessible: terraform --version
+
+
+Now add the following line to add terraform in PATH location.
+export PATH="$PATH:/usr/local/bin/"
+
+cd /etc
+vi profile
+source profile
+
+ link for reference : https://github.com/Cloud-Yeti/aws-labs/tree/master/terraform-aws
