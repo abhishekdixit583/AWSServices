@@ -22,3 +22,6 @@ source profile
 Code : https://github.com/AJarombek/devops-prototypes/tree/master/terraform/helloworld
 
 >scp -i  ".pem" fileName.zip ec2-user@ec2-XXXXXXXX.us-west-2.compute.amazonaws.com:/tmp
+ 
+ https://semanticbits.com/devops-automation-using-terraform/
+ https://github.com/cloudposse/terraform-aws-s3-bucket
