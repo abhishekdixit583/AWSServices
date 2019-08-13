@@ -1,0 +1,46 @@
+ttps://blog.gruntwork.io/an-introduction-to-terraform-f17df9c6d180#3fd2
+https://jarombek.com/blog
+https://www.linode.com/docs/applications/configuration-management/create-terraform-module/
+https://github.com/aws-samples/aws-cognito-apigw-angular-auth
+https://manage.rackspace.com/aws/docs/product-guide/iac_beta/terraform-standards.html
+https://learn.hashicorp.com/terraform/aws/lambda-api-gateway
+
+Cognito User Pool example
+https://github.com/terraform-providers/terraform-provider-aws/tree/24e937a299c9115be47052404a97d6c9d5a4ccfa/examples/cognito-user-pool
+https://github.com/datagovsg/terraform-modules/tree/master/modules/lambda-api-gateway
+
+
+
+https://aws.amazon.com/blogs/compute/secure-api-access-with-amazon-cognito-federated-identities-amazon-cognito-user-pools-and-amazon-api-gateway/
+
+https://github.com/aws-samples/aws-sagemaker-build
+https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-simple-s3.html
+https://github.com/aws-samples/aws-codepipeline-s3-codedeploy-linux
+
+https://code-examples.net/en/docs/terraform/providers/aws/r/codecommit_repository
+
+uri                     = "${aws_lambda_function.lambda_function.invoke_arn}"
+
+aws_lambda_function.to-roman-numberal-js.invoke_arn
+
+output "lambda_function-arn" {
+  value = "${aws_lambda_function.to-roman-numberal-js.invoke_arn}"
+}
+
+data "archive_file" "lambda" {
+  source_file = "${path.module}/toRomanNumeral.js"
+  type = "zip"
+  output_path = "${path.module}/toRomanNumeral.zip"
+}
+
+resource "aws_s3_bucket_object" "build_code" {
+  bucket = "${aws_s3_bucket.build.id}"
+  key    = "lambda-code.zip.${base64sha256(file("lambda-code.zip"))}"
+  source = "lambda-code.zip"
+  etag   = "${md5(file("lambda-code.zip"))}"
+}
+
+data "aws_s3_bucket_object" "build_code" {
+  bucket = "shiva583"
+  key    = "toRomanNumeral.zip"
+}
